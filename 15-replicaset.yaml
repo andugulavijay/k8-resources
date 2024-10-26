@@ -9,33 +9,32 @@ spec:
   # modify replicas according to your case
   replicas: 3
   selector:
-    # these are use to select the pod to create replicas
+    # these are used to select the pod to create replicas
     matchLabels:
-      tier: frontend 
+      tier: frontend
       app: nginx
-  # this is pod definition        
+  # this is pod definition
   template:
     metadata:
-    # these labels belong to pod
+      # these labels belongs to pod
       labels:
         tier: frontend
-        app:  nginx
+        app: nginx
     spec:
       containers:
-      - name: php-redis
-        image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
-
---- 
-kind: service
-apiversion: v1 
+      - name: nginx
+        image: nginx:stable-perl
+---
+kind: Service
+apiVersion: v1
 metadata:
   name: nginx
-spec: 
+spec:
   selector:
     tier: frontend
     app: nginx
-  ports: 
+  ports:
   - name: nginx-svc-port
     protocol: TCP
     port: 80 # service port
-    targetPort: 80 # container port            
+    targetPort: 80 # container port
