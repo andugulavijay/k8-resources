@@ -24,3 +24,18 @@ spec:
       containers:
       - name: php-redis
         image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+
+--- 
+kind: service
+apiversion: v1 
+metadata:
+  name: nginx
+spec: 
+  selector:
+    tier: frontend
+    app: nginx
+  ports: 
+  - name: nginx-svc-port
+    protocol: TCP
+    port: 80 # service port
+    targetPort: 80 # container port            
