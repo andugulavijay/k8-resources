@@ -1,0 +1,15 @@
+kind: pod
+apiversion: v1 
+metadata:
+  name: environment
+spec: 
+  containers:
+  - name: ngonx
+    image: nginx
+    env: 
+    - name: course
+      value: devops
+    - name: trainer
+      value: "siva kumar reddy"
+    - name: duration
+      value: "120hr"    
