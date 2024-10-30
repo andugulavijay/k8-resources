@@ -1,0 +1,9 @@
+kind: StorageClass 
+apiVersion: storgae.k8s.io/v1
+metadata:
+  name: efs-expense
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  Filesystem: fs-0e1275749e395e692
+  basePath: "/expense"
